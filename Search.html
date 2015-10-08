@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <body>
+	<form id="form" onsubmit="searchByKeyword()">
+		<input type="text" name="Search" value="Search" id="sBox"/>
+		
+	</form>
+	
+	<script>
+		function testFunction(){
+			var searchValue = document.getElementById("sBox").value;
+			alert(searchValue);
+		};
+		
+		function searchByKeyword() {
+			var searchValue = document.getElementById("sBox").value;
+			
+			var results = YouTube.Search.list('id,snippet', {q: searchValue, maxResults: 25});
+			for(var i in results.items) {
+				alert("nerd");
+				var item = results.items[i];
+				Logger.log('[%s] Title: %s', item.id.videoId, item.snippet.title);
+			}
+		}
+		
+		
+	</script>
+  </body>
+</html>
